@@ -7,7 +7,7 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | null: false |
+| email              | string | unique: true |
 | encrypted_password | string | null: false |
 | last_name          | string | null: false |
 | first_name         | string | null: false |
@@ -20,7 +20,7 @@
 | Column             | Type    | Options     |
 | ------------------ | ------  | ----------- |
 | name               | string  | null:false  |
-| explanation        | string  | null:false  |
+| explanation        | text  | null:false  |
 | category           | string  | null:false  |
 | status             | string  | null:false  |
 | load               | string  | null:false  |
@@ -35,12 +35,12 @@
 | information        | integer | null:false  |
 | deadline           | integer | null:false  |
 | code               | integer | null:false  |
-| post               | integer | null:false  |
+| post               | string | null:false  |
 | prefectures        | string  | null:false  |
 | city               | string  | null:false  |
 | address            | string  | null:false  |
 | building           | string  |             |
-| telephone          | integer | null:false  |
+| telephone          | string | null:false  |
 
 
 
