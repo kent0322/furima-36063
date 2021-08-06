@@ -18,8 +18,7 @@
 ### Association
 
 - has_many :items
-- has_many :buys
-- 
+- has_many :purchases
 
 ## items テーブル
 
@@ -34,31 +33,35 @@
 | day_id                | integer  | null:false  |
 | price                 | integer  | null:false  |
 | user   | references | null: false, foreign_key: true |
-belongs_to :users
-- has_one :buys
 
-## buys テーブル
+- belongs_to :user
+- has_one :purchase
+
+## buy_addresses テーブル
 
 | Column             | Type    | Options     |
 | ------------------ | ------  | ----------- |
-| information        | integer | null:false  |
-| deadline           | integer | null:false  |
-| code               | integer | null:false  |
 | post               | string | null:false  |
-| prefectures        | string  | null:false  |
+| prefectures        | integer  | null:false  |
 | city               | string  | null:false  |
 | address            | string  | null:false  |
 | building           | string  |             |
 | telephone          | string | null:false  |
+| purchases          | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :purchase
 
 ## purchases テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | user    | references | null: false, foreign_key: true |
-| room    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+
+## Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :buy
