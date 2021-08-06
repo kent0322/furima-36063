@@ -7,7 +7,7 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | unique: true |
+| email              | string | null: false, unique: true  |
 | encrypted_password | string | null: false |
 | last_name          | string | null: false |
 | first_name         | string | null: false |
@@ -15,18 +15,27 @@
 | first_name_kana    | string | null: false |
 | birthday           | date   | null: false |
 
+### Association
+
+- has_many :items
+- has_many :buys
+- 
+
 ## items テーブル
 
 | Column             | Type    | Options     |
 | ------------------ | ------  | ----------- |
 | name               | string  | null:false  |
 | explanation        | text  | null:false  |
-| category           | string  | null:false  |
-| status             | string  | null:false  |
-| load               | string  | null:false  |
-| area               | string  | null:false  |
-| day                | date    | null:false  |
-| price              | integer | null:false  |
+| category_id           | integer  | null:false  |
+| status_id             | integer  | null:false  |
+| load_id               | integer  | null:false  |
+| area_id               | integer  | null:false  |
+| day_id                | integer  | null:false  |
+| price                 | integer  | null:false  |
+| user   | references | null: false, foreign_key: true |
+belongs_to :users
+- has_one :buys
 
 ## buys テーブル
 
@@ -42,6 +51,14 @@
 | building           | string  |             |
 | telephone          | string | null:false  |
 
+### Association
 
+- belongs_to :users
+- belongs_to :items
 
+## purchases テーブル
 
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| room    | references | null: false, foreign_key: true |
