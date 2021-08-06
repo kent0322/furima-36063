@@ -42,7 +42,7 @@
 | Column             | Type    | Options     |
 | ------------------ | ------  | ----------- |
 | post               | string | null:false  |
-| prefectures        | string  | null:false  |
+| prefectures        | string | null:false |
 | city               | string  | null:false  |
 | address            | string  | null:false  |
 | building           | string  |             |
