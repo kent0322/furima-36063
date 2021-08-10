@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
       end
 
       it "5文字以下では登録できない" do
-        @user.password = "123456"
+        @user.password = "1234"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password は半角6~12文字英小文字・数字それぞれ１文字以上含む必要があります")
       end
