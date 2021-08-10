@@ -23,3 +23,4 @@ with_options presence: true do
     validates :first_name_kana
   end
 end
+end
