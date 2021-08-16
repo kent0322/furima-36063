@@ -20,19 +20,19 @@ class ItemsController < ApplicationController
   end
   
   def update
-    item.update(items_params)
+    @item.update(items_params)
     if item.update(items_params)
-      redirect_to item_path(item)
+      redirect_to item_path(@item)
     else
       render :edit
     end
   end
 
 
-  def destroy
-    item = Item.find(params[:id])
-    item.destroy
-  end
+  #def destroy
+    #item = Item.find(params[:id])
+   # item.destroy
+ # end
 
   def create
     @item = Item.new(items_params)
