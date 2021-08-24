@@ -5,13 +5,16 @@ require 'rails_helper'
      @user = FactoryBot.create(:user)
      @seller = FactoryBot.create(:user)
      @item = FactoryBot.create(:item, user_id: @seller.id)
-     #binding.pry
      @form = FactoryBot.build(:form, user_id: @user.id, item_id: @item.id)
      sleep 0.1
     end 
 
   context '商品購入ができる時' do
     it "すべでのカラムに正常値があれば登録できる" do
+      expect(@form).to be_valid
+    end
+    it "建物名が空でも登録できる" do
+      @form.building = ''
       expect(@form).to be_valid
     end
   end
@@ -58,7 +61,7 @@ require 'rails_helper'
         @form.valid?
         expect(@form.errors.full_messages).to include("Telephone 10桁以上11桁以内の半角数値のみ")
       end
-      
+
         it "tokenが空では登録できないこと" do
           @form.token = nil
           @form.valid?

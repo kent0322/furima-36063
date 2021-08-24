@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!,     only: [:index, :create]
-  before_action :set_item,             expect: [:index, :create]
+  before_action :set_item,               only: [:index, :create]
   before_action :move_to_index,          only: [:index, :create]
 
 
@@ -26,7 +26,6 @@ class OrdersController < ApplicationController
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    #binding.pry 
     Payjp::Charge.create(
       amount: @item.price,
       card: sell_item_params[:token],  
